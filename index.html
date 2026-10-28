@@ -32,7 +32,10 @@
             <p class="section-label">ACTIVE ELEMENT</p>
             <p id="active-element" class="active-element" aria-live="polite">Choose an element</p>
           </div>
-          <p class="canvas-hint">Click or drag to paint</p>
+          <div class="canvas-meta">
+            <p id="pixel-counter" class="pixel-counter" aria-live="polite">Pixels: 0 / 2000</p>
+            <p class="canvas-hint">Click or drag to paint</p>
+          </div>
         </div>
 
         <div class="canvas-wrap">
@@ -43,8 +46,9 @@
             aria-label="Interactive pixel field. Choose an element before clicking or dragging to paint."
           ></canvas>
           <p id="canvas-message" class="canvas-message" role="status" aria-live="polite">
-            Select an element to begin.
+            Try Water beside Plant, or Fire beside Wood.
           </p>
+          <span id="reaction-flash" class="reaction-flash" aria-hidden="true"></span>
         </div>
 
         <div class="toolbar" aria-label="Element controls">
@@ -64,16 +68,52 @@
               <span>Plant</span>
               <small>holds still</small>
             </button>
+            <button class="element-button stone" type="button" data-element="stone" aria-pressed="false">
+              <span class="swatch" aria-hidden="true"></span>
+              <span>Stone</span>
+              <small>holds still</small>
+            </button>
+            <button class="element-button sand" type="button" data-element="sand" aria-pressed="false">
+              <span class="swatch" aria-hidden="true"></span>
+              <span>Sand</span>
+              <small>trickles down</small>
+            </button>
+            <button class="element-button wood" type="button" data-element="wood" aria-pressed="false">
+              <span class="swatch" aria-hidden="true"></span>
+              <span>Wood</span>
+              <small>can burn</small>
+            </button>
+            <button class="element-button ice" type="button" data-element="ice" aria-pressed="false">
+              <span class="swatch" aria-hidden="true"></span>
+              <span>Ice</span>
+              <small>can melt</small>
+            </button>
+            <button class="element-button snow" type="button" data-element="snow" aria-pressed="false">
+              <span class="swatch" aria-hidden="true"></span>
+              <span>Snow</span>
+              <small>falls softly</small>
+            </button>
           </div>
           <button id="clear-button" class="clear-button" type="button">Clear field</button>
         </div>
       </section>
 
       <aside class="rules" aria-label="Element movement guide">
-        <p><span class="rule-dot fire-dot"></span><strong>Fire</strong> rises and fades.</p>
-        <p><span class="rule-dot water-dot"></span><strong>Water</strong> falls and spreads.</p>
-        <p><span class="rule-dot plant-dot"></span><strong>Plant</strong> stays where you grow it.</p>
+        <p><span class="rule-dot fire-dot"></span><strong>Fire + Plant / Wood</strong> makes charcoal.</p>
+        <p><span class="rule-dot water-dot"></span><strong>Water + Plant</strong> causes growth.</p>
+        <p><span class="rule-dot plant-dot"></span><strong>Sand</strong> falls and piles up; <strong>Stone</strong> stays in place.</p>
       </aside>
+
+      <details class="reaction-guide">
+        <summary>Reaction guide</summary>
+        <ul>
+          <li><span class="mini-swatch fire-swatch"></span>Fire + <span class="mini-swatch water-swatch"></span>Water → Steam</li>
+          <li><span class="mini-swatch water-swatch"></span>Water + <span class="mini-swatch plant-swatch"></span>Plant → Growth</li>
+          <li><span class="mini-swatch fire-swatch"></span>Fire + Plant / Wood → Charcoal</li>
+          <li><span class="mini-swatch fire-swatch"></span>Fire + Ice → Water + Steam</li>
+          <li><span class="mini-swatch fire-swatch"></span>Fire + Snow → Steam</li>
+        </ul>
+      </details>
     </main>
 
     <script src="script.js"></script>

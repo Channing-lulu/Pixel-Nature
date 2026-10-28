@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A small pixel playground for exploring natural elements."
+    />
+    <title>Pixel Nature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">INTERACTIVE PIXEL PLAYGROUND</p>
+        <h1>Pixel Nature</h1>
+        <p class="intro">
+          Choose an element, paint it onto the field, and watch each tiny piece find its own path.
+        </p>
+      </header>
+
+      <section class="playground" aria-label="Pixel Nature playground">
+        <div class="canvas-heading">
+          <div>
+            <p class="section-label">ACTIVE ELEMENT</p>
+            <p id="active-element" class="active-element" aria-live="polite">Choose an element</p>
+          </div>
+          <p class="canvas-hint">Click or drag to paint</p>
+        </div>
+
+        <div class="canvas-wrap">
+          <canvas
+            id="nature-canvas"
+            width="720"
+            height="480"
+            aria-label="Interactive pixel field. Choose an element before clicking or dragging to paint."
+          ></canvas>
+          <p id="canvas-message" class="canvas-message" role="status" aria-live="polite">
+            Select an element to begin.
+          </p>
+        </div>
+
+        <div class="toolbar" aria-label="Element controls">
+          <div class="element-buttons" role="group" aria-label="Choose an element">
+            <button class="element-button fire" type="button" data-element="fire" aria-pressed="false">
+              <span class="swatch" aria-hidden="true"></span>
+              <span>Fire</span>
+              <small>drifts up</small>
+            </button>
+            <button class="element-button water" type="button" data-element="water" aria-pressed="false">
+              <span class="swatch" aria-hidden="true"></span>
+              <span>Water</span>
+              <small>flows down</small>
+            </button>
+            <button class="element-button plant" type="button" data-element="plant" aria-pressed="false">
+              <span class="swatch" aria-hidden="true"></span>
+              <span>Plant</span>
+              <small>holds still</small>
+            </button>
+          </div>
+          <button id="clear-button" class="clear-button" type="button">Clear field</button>
+        </div>
+      </section>
+
+      <aside class="rules" aria-label="Element movement guide">
+        <p><span class="rule-dot fire-dot"></span><strong>Fire</strong> rises and fades.</p>
+        <p><span class="rule-dot water-dot"></span><strong>Water</strong> falls and spreads.</p>
+        <p><span class="rule-dot plant-dot"></span><strong>Plant</strong> stays where you grow it.</p>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
